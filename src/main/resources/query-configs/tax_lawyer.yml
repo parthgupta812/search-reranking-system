@@ -1,0 +1,28 @@
+# Tax Lawyer Query Configuration
+query:
+  type: "tax_lawyer"
+  natural_language_description: "Seasoned attorney with a JD from a top U.S. law school and over three years of legal practice, specializing in corporate tax structuring and compliance. Has represented clients in IRS audits and authored legal opinions on federal tax code matters."
+  
+hard_criteria:
+  - "JD degree from an accredited U.S. law school"
+  - "3+ years of experience practicing law"
+
+soft_criteria:
+  - "Experience advising clients on tax implications of corporate or financial transactions"
+  - "Experience handling IRS audits, disputes, or regulatory inquiries" 
+  - "Experience drafting legal opinions or filings related to federal and state tax compliance"
+
+filters:
+  education_requirements:
+    - degree_type: "jd"
+    - country: "united_states"
+  experience_requirements:
+    - min_years: 3
+    - field: "law"
+    
+evaluation:
+  max_candidates: 10
+  scoring_weights:
+    education: 0.4
+    experience: 0.4
+    specialization: 0.2

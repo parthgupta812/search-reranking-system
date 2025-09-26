@@ -1,0 +1,16 @@
+spring:
+  profiles: dev
+
+logging:
+  level:
+    root: DEBUG
+    com.searchengine.reranking: TRACE
+    org.springframework.web.client: DEBUG
+
+server:
+  port: 8080
+
+search:
+  api:
+    # Development mode - more verbose logging and relaxed timeouts
+    timeout: 30000

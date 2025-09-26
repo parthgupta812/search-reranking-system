@@ -1,0 +1,15 @@
+spring:
+  profiles: prod
+
+logging:
+  level:
+    root: WARN
+    com.searchengine.reranking: INFO
+
+server:
+  port: ${PORT:8080}
+
+search:
+  api:
+    # Production mode - stricter timeouts and error handling
+    timeout: 10000

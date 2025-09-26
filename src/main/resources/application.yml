@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+
+spring:
+  application:
+    name: search-reranking-system
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  jackson:
+    default-property-inclusion: NON_NULL
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    time-zone: UTC
+  web:
+    resources:
+      add-mappings: true
+
+# API Configuration
+search:
+  api:
+    turbo-puffer-api-key: ${TURBOPUFFER_API_KEY:your_turbopuffer_api_key_here}
+    voyage-api-key: ${VOYAGE_API_KEY:your_voyage_api_key_here}
+    open-ai-api-key: ${OAI_KEY:your_openai_api_key_here}
+    turbo-puffer-base-url: https://api.turbopuffer.com
+    voyage-base-url: https://api.voyageai.com
+    evaluation-endpoint: https://api.evaluation.com/score
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.searchengine.reranking: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Management/Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+# Application Info
+info:
+  app:
+    name: ${spring.application.name}
+    description: Advanced search and re-ranking system
+    version: 1.0.0
+    author: Nirmit Goyal
